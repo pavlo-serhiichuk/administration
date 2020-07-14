@@ -56,3 +56,6 @@ header{
     font-size: 10px;
     display: none;
 }
+.login-button, .register-button{
+    display: none;
+}
