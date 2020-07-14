@@ -3,41 +3,42 @@ let users = [{
     password: '2',
 }];
 
-function showLoginDialog() {
-    getClassName('login-popup-container').style.display = 'block';
-    getClassName('login-button').style.display = 'block';
-}
+let dialog = {
+    showLogin(){
+        getClassName('login-popup-container').style.display = 'block';
+        getClassName('login-button').style.display = 'block';
+    },
+    showRegister(){
+        getClassName('login-popup-container').style.display = 'block';
+        getClassName('register-button').style.display = 'block';
+    },
+    close(){
+        getClassName('login-popup-container').style.display = 'none';
+        getClassName('register-button').style.display = 'none';
+        getClassName('login-button').style.display = 'none';
+        document.getElementById('username').value = '';
+        document.getElementById('password').value = '';
+        getClassName('massage').style.display = 'none';
 
-function showRegistrationDialog() {
-    getClassName('login-popup-container').style.display = 'block';
-    getClassName('register-button').style.display = 'block';
-}
+    }
+};
 
-function closeLoginDialog() {
-    getClassName('login-popup-container').style.display = 'none';
-    getClassName('register-button').style.display = 'none';
-    getClassName('login-button').style.display = 'none';
-}
-
-function showDataForAutorizedUser(username) {
-    getClassName('user').style.display = 'block';
-    getClassName('log-in').style.display = 'none';
-    getClassName('login').innerHTML = username;
-    getClassName('massage').style.display = 'none';
-    getClassName('registration').style.display = 'none';
-    document.getElementById('username').value = '';
-    document.getElementById('password').value = '';
-    closeLoginDialog();
-    showUserData();
-}
-
-function logOut() {
-    getClassName('user').style.display = 'none';
-    getClassName('log-in').style.display = 'block';
-    getClassName('user-data').style.display = 'none';
-    getClassName('registration').style.display = 'block';
-
-}
+let accountMenu = {
+  show(username){
+      getClassName('user').style.display = 'block';
+      getClassName('showLoginDialogButton').style.display = 'none';
+      getClassName('login').innerHTML = username;
+      getClassName('showRegistrationDialogButton').style.display = 'none';
+      dialog.close();
+      showUserData();
+  },
+    hide(){
+        getClassName('user').style.display = 'none';
+        getClassName('showLoginDialogButton').style.display = 'block';
+        getClassName('user-data').style.display = 'none';
+        getClassName('showRegistrationDialogButton').style.display = 'block';
+    },
+};
 
 function getClassName(className) {
     return document.getElementsByClassName(className)[0];
@@ -47,7 +48,7 @@ function loginUser() {
     let credential = getCredentials();
 
     if (isUserExist(credential)) {
-        showDataForAutorizedUser(credential.username);
+        accountMenu.show(credential.username);
     } else {
         showErrorMassage('Wrong data!!!');
     }
@@ -59,7 +60,7 @@ function registerUser() {
     if (isUserExist(credential)) {
         showErrorMassage('User is already exist.');
     } else {
-        showDataForAutorizedUser(credential.username);
+        accountMenu.show(credential.username);
         users.push(credential);
     }
 }
@@ -73,8 +74,8 @@ function showUserData() {
     getClassName('user-data').style.display = 'block';
 }
 
-function isUserExist({username, password}) {
-    let filteredUsers = users.filter(user => username == user.username && password == user.password);
+function isUserExist({username}) {
+    let filteredUsers = users.filter(user => username == user.username);
     return !!filteredUsers.length;
 }
 
