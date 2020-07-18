@@ -16,6 +16,17 @@ header{
     justify-content: space-between;
     background-color: brown;
 }
+.logo-container{
+    width: 200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+#translationKey{
+    background-color: brown;
+    outline: none;
+    border: none;
+}
 .logo{
     margin: 5px 10%;
     font-size: 30px;

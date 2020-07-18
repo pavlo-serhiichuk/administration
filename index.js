@@ -2,37 +2,75 @@ let users = [{
     username: '2',
     password: '2',
 }];
+let translations = {
+    "log-in-text": {
+        "en": "Log in",
+        "ru": "Вход",
+        "ua": "Вхiд",
+    },
+    "registration-text":{
+        "en": "Registration",
+        "ru": "Регистрация",
+        "ua": "Реєстрація",
+    },
+    "log-out-in-text":{
+      "en": "Exit",
+      "ru": "Выход",
+      "ua": "Вихід"
+    },
+    "login-button":{
+        "en":"Login",
+        "ru":"Войти",
+        "ua":"Вийти",
+    },
+    "register-button":{
+        "en":"Registration",
+        "ru":"Зарегистрироваться",
+        "ua":"Зареєструватися"
+    }
+
+};
+
+changeTranslations();
+
+function changeTranslations(){
+    let language = document.getElementById('translationKey').value;
+
+    for(let key in translations){
+        let translate = translations[key][language];
+        getClassName(key).innerHTML = translate;
+    }
+}
 
 let dialog = {
-    showLogin(){
+    showLogin() {
         getClassName('login-popup-container').style.display = 'block';
         getClassName('login-button').style.display = 'block';
     },
-    showRegister(){
+    showRegister() {
         getClassName('login-popup-container').style.display = 'block';
         getClassName('register-button').style.display = 'block';
     },
-    close(){
+    close() {
         getClassName('login-popup-container').style.display = 'none';
         getClassName('register-button').style.display = 'none';
         getClassName('login-button').style.display = 'none';
         document.getElementById('username').value = '';
         document.getElementById('password').value = '';
         getClassName('massage').style.display = 'none';
-
     }
 };
 
 let accountMenu = {
-  show(username){
-      getClassName('user').style.display = 'block';
-      getClassName('showLoginDialogButton').style.display = 'none';
-      getClassName('login').innerHTML = username;
-      getClassName('showRegistrationDialogButton').style.display = 'none';
-      dialog.close();
-      showUserData();
-  },
-    hide(){
+    show(username) {
+        getClassName('user').style.display = 'block';
+        getClassName('showLoginDialogButton').style.display = 'none';
+        getClassName('login').innerHTML = username;
+        getClassName('showRegistrationDialogButton').style.display = 'none';
+        dialog.close();
+        showUserData();
+    },
+    hide() {
         getClassName('user').style.display = 'none';
         getClassName('showLoginDialogButton').style.display = 'block';
         getClassName('user-data').style.display = 'none';

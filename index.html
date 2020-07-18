@@ -8,15 +8,22 @@
 <body>
 <div class="container">
     <header>
-        <div class="logo">Logo</div>
+        <div class="logo-container">
+            <div class="logo">Logo</div>
+            <select id="translationKey" onchange="changeTranslations()">
+                <option value="en">English</option>
+                <option value="ru">Русский</option>
+                <option value="ua" selected>Українська</option>
+            </select>
+        </div>
         <div>
-        <button class="menu showLoginDialogButton" onclick="dialog.showLogin()">Log in</button>
-        <button class="menu showRegistrationDialogButton" onclick="dialog.showRegister()">Registration</button>
+        <button class="menu showLoginDialogButton log-in-text" onclick="dialog.showLogin()"></button>
+        <button class="menu showRegistrationDialogButton registration-text" onclick="dialog.showRegister()"></button>
         </div>
         <div class="user">
             <span>&#129503</span>
             <span class="login">User</span>
-            <button class="menu" onclick="accountMenu.hide()">Exit</button>
+            <button class="menu log-out-in-text" onclick="accountMenu.hide()"></button>
         </div>
     </header>
 
