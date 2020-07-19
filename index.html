@@ -8,19 +8,20 @@
 <body>
 <div class="container">
     <header>
-        <div class="logo-container">
+        <div>
+            <div class="logo-container">
                 <button class="logo-good">GOOD </button>
                 <button class="logo-bet">BET</button>
             </div>
-        <div>
             <select id="translationKey" onchange="changeTranslations()">
-                <option value="en">English</option>
+                <option value="en" selected>English</option>
                 <option value="ru">Русский</option>
-                <option value="ua" selected>Українська</option>
+                <option value="ua">Українська</option>
             </select>
+        </div>
+        <div class="main-menu">
             <button class="menu showLoginDialogButton log-in-text" onclick="dialog.showLogin()"></button>
-            <button class="menu showRegistrationDialogButton registration-text"
-                    onclick="dialog.showRegister()"></button>
+            <button class="menu showRegistrationDialogButton register-text" onclick="dialog.showRegister()"></button>
         </div>
         <div class="user">
             <span>&#129503</span>
@@ -28,11 +29,12 @@
             <button class="menu log-out-in-text" onclick="accountMenu.hide()"></button>
         </div>
     </header>
-
-
     <div class="user-data">All user data</div>
     <main>
-        <div class="sports"></div>
+        <div class="sports">
+            <div class="title">Title</div>
+<!--            <button class="football" onclick="showSport()">football</button>-->
+        </div>
         <section></section>
         <div class="bets"></div>
     </main>

@@ -7,10 +7,14 @@ body {
     color: rgba(19,9,29,0.69);
 
 }
-button{
+button, #translationKey{
     border: none;
     font-weight: bold;
     color: rgba(19,9,29,0.69);
+    font-style: oblique;
+    outline: none;
+    color: white;
+    cursor: pointer;
 }
 .container {
     width: 100%;
@@ -26,16 +30,19 @@ header {
     background-color: dodgerblue;
     padding: 0 10px;
 }
+header>div{
+    display: flex;
+    justify-content: space-around;
+}
 
 .logo-container {
-    width: 300px;
+    width: 236px;
     display: flex;
     flex-direction: row;
     font-family: Verdana, Arial, Helvetica, sans-serif;
 }
 
 .logo-good {
-    padding: 0;
     top: 10px;
     border: none;
     outline: none;
@@ -43,11 +50,11 @@ header {
     padding: 0 4px;
     background-color: #fff;
     font-weight: bold;
+    color: rgba(19, 9, 29, 0.69);
 }
-.logo-good:hover{
-    background-color: #fff;
-    color: rgba(19,9,29,0.69);
-}
+/*.logo-good:hover{*/
+/*    background-color: dodgerblue;*/
+/*}*/
 .logo-bet{
     background-color: dodgerblue;
     height: 100%;
@@ -56,14 +63,13 @@ header {
     outline: none;
     font-size: 40px;
     font-weight: bold;
-    color: rgba(19,9,29,0.69);
-
+    color: white;
 }
 
 #translationKey {
     background-color: dodgerblue;
-    outline: none;
-    border: none;
+    font-style: oblique;
+    color: white;
 }
 
 .login-popup-container {
@@ -95,11 +101,18 @@ header {
     margin: 0;
     display: none;
 }
+.main-menu{
+    display: inline-flex;
+    flex-direction: row;
+}
 .menu {
     height: 100%;
-    background-color: #fff;
     font-size: 15px;
-
+    background-color: dodgerblue;
+}
+.menu:hover{
+    background-color: #fff;
+    color: rgba(19,9,29,0.69);
 }
 .massage {
     color: red;
@@ -111,15 +124,25 @@ header {
 }
 
 main{
-
     display: grid;
     grid-template-columns: 2fr 6fr 3fr;
     height: 700px;
+    padding: 5px 10px;
 }
 .sports{
     background-color: rgba(245, 247, 232, 0.69);
     margin: 5px;
+    display: flex;
+    flex-direction: column;
 }
+.sports>button{
+    color: #000;
+    padding: 5px;
+}
+.sports>button:hover{
+    background-color: silver;
+}
+
 section{
     background-color: rgba(245, 247, 232, 0.69);
     margin: 5px;
@@ -128,5 +151,7 @@ section{
 .bets{
     background-color: rgba(245, 247, 232, 0.69);
     margin: 5px;
-
+}
+.az-sport{
+    border: 1px solid red;
 }

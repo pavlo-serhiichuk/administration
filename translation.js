@@ -4,7 +4,7 @@ let translations = {
         "ru": "Вход",
         "ua": "Вхiд",
     },
-    "registration-text":{
+    "register-text":{
         "en": "Registration",
         "ru": "Регистрация",
         "ua": "Реєстрація",

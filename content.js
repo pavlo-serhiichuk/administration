@@ -1,5 +1,5 @@
 let content = {
-    football: {
+    az_football: {
         SPORT_NAME: {
             "en": "Football",
             "ru": "Футбол"
@@ -8,10 +8,10 @@ let content = {
             {
                 NAME: {
                     "en":"Dinamo Kiyv - Shahtar",
-                    "ru":"Динако Київ - Шахтар",
+                    "ru":"Динако Киев - Шахтар",
                 },
             },
-            {
+        {
                 NAME: {
                     "en":"Dnipro - Zenit",
                     "ru":"Дніпро - Зенит",
@@ -21,7 +21,7 @@ let content = {
         ]
 
     },
-    basketball: {
+    az_basketball: {
         SPORT_NAME: {
             "en": "Basketball",
             "ru": "Баскетбол"

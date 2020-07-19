@@ -1,19 +1,23 @@
+let currentLanguage = "en";
 let users = [{
     username: '2',
     password: '2',
 }];
 
+setContent();
 changeTranslations();
 
-function setContent() {
-
-}
-function changeTranslations(){
+function changeTranslations() {
     let language = document.getElementById('translationKey').value;
 
-    for(let key in translations){
+    for (let key in translations) {
         let translate = translations[key][language];
         getClassName(key).innerHTML = translate;
+    }
+
+    for (let sportName in content) {
+        let translation = content[sportName].SPORT_NAME[language];
+        getClassName(sportName).innerHTML = translation;
     }
 }
 
@@ -96,4 +100,30 @@ function getCredentials() {
     let username = document.getElementById('username').value;
     let password = document.getElementById('password').value;
     return {username, password};
+}
+
+function setContent() {
+    let sportMenu = getClassName('sports')
+    for (let sportName in content) {
+        let translation = content[sportName].SPORT_NAME[currentLanguage];
+        let button = createButton(sportName, translation);
+        sportMenu.appendChild(button);
+    }
+}
+
+function showSport() {
+
+}
+
+function createButton(sportName, translation) {
+    let button = document.createElement('BUTTON');
+    button.classList.add(sportName);
+    button.classList.add('az-sport');
+    button.onclick = () => showSport(sportName);
+    button.innerHTML = translation;
+    return button;
+}
+
+function insertButton() {
+
 }
