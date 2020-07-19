@@ -9,16 +9,18 @@
 <div class="container">
     <header>
         <div class="logo-container">
-            <div class="logo">Logo</div>
+                <button class="logo-good">GOOD </button>
+                <button class="logo-bet">BET</button>
+            </div>
+        <div>
             <select id="translationKey" onchange="changeTranslations()">
                 <option value="en">English</option>
                 <option value="ru">Русский</option>
                 <option value="ua" selected>Українська</option>
             </select>
-        </div>
-        <div>
-        <button class="menu showLoginDialogButton log-in-text" onclick="dialog.showLogin()"></button>
-        <button class="menu showRegistrationDialogButton registration-text" onclick="dialog.showRegister()"></button>
+            <button class="menu showLoginDialogButton log-in-text" onclick="dialog.showLogin()"></button>
+            <button class="menu showRegistrationDialogButton registration-text"
+                    onclick="dialog.showRegister()"></button>
         </div>
         <div class="user">
             <span>&#129503</span>
@@ -29,6 +31,11 @@
 
 
     <div class="user-data">All user data</div>
+    <main>
+        <div class="sports"></div>
+        <section></section>
+        <div class="bets"></div>
+    </main>
 </div>
 
 <div class="login-popup-container">
@@ -39,9 +46,11 @@
         <input id="password" type="password" placeholder="Password">
         <button class="login-button" onclick="loginUser()">Login</button>
         <button class="register-button" onclick="registerUser()">Register</button>
-
     </div>
+
 </div>
+<script src="translation.js"></script>
+<script src="content.js"></script>
 <script src="index.js"></script>
 </body>
 </html>
