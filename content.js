@@ -2,7 +2,8 @@ let content = {
     az_football: {
         SPORT_NAME: {
             "en": "Football",
-            "ru": "Футбол"
+            "ru": "Футбол",
+            "ua": "Футбол"
         },
         EVENTS:[
             {
@@ -24,7 +25,8 @@ let content = {
     az_basketball: {
         SPORT_NAME: {
             "en": "Basketball",
-            "ru": "Баскетбол"
+            "ru": "Баскетбол",
+            "ua": "Баскетбол",
         },
         EVENTS:[
             {

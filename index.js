@@ -46,6 +46,7 @@ let accountMenu = {
         getClassName('showLoginDialogButton').style.display = 'none';
         getClassName('login').innerHTML = username;
         getClassName('showRegistrationDialogButton').style.display = 'none';
+        getClassName('logo-container').classList.add('logged');
         dialog.close();
         showUserData();
     },
@@ -53,7 +54,7 @@ let accountMenu = {
         getClassName('user').style.display = 'none';
         getClassName('showLoginDialogButton').style.display = 'block';
         getClassName('user-data').style.display = 'none';
-        getClassName('showRegistrationDialogButton').style.display = 'block';
+        getClassName('logo-container').classList.remove('logged');
     },
 };
 
