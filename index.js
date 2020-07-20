@@ -103,7 +103,7 @@ function getCredentials() {
 }
 
 function setContent() {
-    let sportMenu = getClassName('sports')
+    let sportMenu = getClassName('sports');
     for (let sportName in content) {
         let translation = content[sportName].SPORT_NAME[currentLanguage];
         let button = createButton(sportName, translation);
