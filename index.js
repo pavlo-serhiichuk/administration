@@ -138,9 +138,15 @@ function getEventNameContainer(eventName) {
 function getButtonContainer() {
     let buttonContainer = document.createElement('DIV');
     buttonContainer.classList.add('button-container');
-    let button = document.createElement('BUTTON');
-    button.innerHTML = '3.43';
-    buttonContainer.appendChild(button);
+    let button0 = document.createElement('BUTTON');
+    let button1 = document.createElement('BUTTON');
+    let button2 = document.createElement('BUTTON');
+    button0.innerHTML = '3.43';
+    button1.innerHTML = '2.3';
+    button2.innerHTML = '1.75';
+    buttonContainer.appendChild(button0);
+    buttonContainer.appendChild(button1);
+    buttonContainer.appendChild(button2);
     return buttonContainer;
 }
 
