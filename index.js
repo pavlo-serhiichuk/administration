@@ -122,21 +122,26 @@ function showSport(sportName) {
 
         let eventContainer = document.createElement('DIV');
         eventContainer.classList.add('event-container');
-
-        let eventNameContainer = document.createElement('DIV');
-        eventNameContainer.classList.add('event-name-container');
-        eventNameContainer.innerHTML = eventName;
-        eventContainer.appendChild(eventNameContainer);
-
-        let buttonContainer = document.createElement('DIV');
-        buttonContainer.classList.add('button-container');
-        let button = document.createElement('BUTTON');
-        button.innerHTML = '3.43';
-        buttonContainer.appendChild(button);
-        eventContainer.appendChild(buttonContainer);
-
+        eventContainer.appendChild(getEventNameContainer(eventName));
+        eventContainer.appendChild(getButtonContainer());
         sportContent.appendChild(eventContainer);
     });
+}
+
+function getEventNameContainer(eventName) {
+    let eventNameContainer = document.createElement('DIV');
+    eventNameContainer.classList.add('event-name-container');
+    eventNameContainer.innerHTML = eventName;
+    return eventNameContainer;
+}
+
+function getButtonContainer() {
+    let buttonContainer = document.createElement('DIV');
+    buttonContainer.classList.add('button-container');
+    let button = document.createElement('BUTTON');
+    button.innerHTML = '3.43';
+    buttonContainer.appendChild(button);
+    return buttonContainer;
 }
 
 function createButton(sportName, translation) {
