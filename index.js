@@ -1,5 +1,5 @@
-let selectedSport;
-let currentLanguage = "en";
+let selectedSport = Object.keys(content)[0];
+let selectedLanguage = "en";
 let users = [{
     username: '2',
     password: '2',
@@ -9,17 +9,18 @@ setContent();
 changeTranslations();
 
 function changeTranslations() {
-    let language = document.getElementById('translationKey').value;
+    selectedLanguage = document.getElementById('translationKey').value;
 
     for (let key in translations) {
-        let translate = translations[key][language];
+        let translate = translations[key][selectedLanguage];
         getClassName(key).innerHTML = translate;
     }
 
     for (let sportName in content) {
-        let translation = content[sportName].SPORT_NAME[language];
+        let translation = content[sportName].SPORT_NAME[selectedLanguage];
         getClassName(sportName).innerHTML = translation;
     }
+
     showSport(selectedSport);
 }
 
@@ -104,19 +105,14 @@ function getCredentials() {
 function setContent() {
     let sportMenu = getClassName('sport-menu');
     for (let sportName in content) {
-        let translation = content[sportName].SPORT_NAME[currentLanguage];
+        let translation = content[sportName].SPORT_NAME[selectedLanguage];
         let button = createButton(sportName, translation);
         sportMenu.appendChild(button);
-
-        if (content[sportName].SELECTED) {
-            selectedSport = sportName;
-        }
     }
 }
 
 function showSport(sportName) {
     selectedSport = sportName;
-    let selectedLanguage = document.getElementById('translationKey').value;
     let sportContent = getClassName('sport-content');
     sportContent.innerHTML = '';
     let events = content[sportName].EVENTS;
