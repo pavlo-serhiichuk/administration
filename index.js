@@ -115,7 +115,7 @@ function showSport(sportName) {
     selectedSport = sportName;
     let sportContent = getClassName('sport-content');
     sportContent.innerHTML = '';
-    let events = content[sportName].EVENTS;
+    let events = ((content[sportName] || {}).EVENTS || []);
 
     events.forEach(item => {
         let eventName = item.NAME[selectedLanguage];
