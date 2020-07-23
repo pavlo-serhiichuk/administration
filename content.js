@@ -1,5 +1,6 @@
 let content = {
     az_football: {
+        SELECTED: true,
         SPORT_NAME: {
             "en": "Football",
             "ru": "Футбол",
@@ -25,6 +26,51 @@ let content = {
     az_basketball: {
         SPORT_NAME: {
             "en": "Basketball",
+            "ru": "Баскетбол",
+            "ua": "Баскетбол",
+        },
+        EVENTS:[
+            {
+                NAME: {
+                    "en":"Chicago Bulls - Chimik",
+                    "ru":"Чикагські бики - Химик",
+                },
+            },
+            {
+                NAME: {
+                    "en":"Denver Nuggets - Goverla",
+                    "ru":"Денверс Наггетс - Говерла",
+                },
+            },
+
+        ]
+
+    },
+    az_tennis: {
+        SPORT_NAME: {
+            "en": "tennis",
+            "ru": "Баскетбол",
+            "ua": "Баскетбол",
+        },
+        EVENTS:[
+            {
+                NAME: {
+                    "en":"Chicago Bulls - Chimik",
+                    "ru":"Чикагські бики - Химик",
+                },
+            },
+            {
+                NAME: {
+                    "en":"Denver Nuggets - Goverla",
+                    "ru":"Денверс Наггетс - Говерла",
+                },
+            },
+
+        ]
+
+    },az_baseball: {
+        SPORT_NAME: {
+            "en": "baseball",
             "ru": "Баскетбол",
             "ua": "Баскетбол",
         },

@@ -73,6 +73,10 @@ header>div{
     color: white;
 }
 
+#translationKey:hover {
+    color: rgba(19, 9, 29, 0.69);
+}
+
 .login-popup-container {
     width: 100%;
     height: 100%;
@@ -94,13 +98,22 @@ header>div{
     justify-content: space-around;
     background: #fff;
 }
-.user-data {
-    display: none;
-}
 
 .user {
     margin: 0;
     display: none;
+    padding-right: 15px;
+}
+.user>.login{
+    padding-right: 10px;
+    font-style: oblique;
+    font-size: 18px;
+    font-weight: bold;
+}
+.avatar{
+    border: 1px solid silver;
+    width: 30px;
+    height: 40px;
 }
 .main-menu{
     display: inline-flex;
@@ -111,11 +124,11 @@ header>div{
     font-size: 15px;
     background-color: dodgerblue;
 }
-.showLoginDialogButton{
-    color: #3b3b3b;
-}
 .menu:hover{
     color: rgba(19,9,29,0.69);
+}
+.showLoginDialogButton{
+    color: #3b3b3b;
 }
 .massage {
     color: red;
@@ -138,11 +151,11 @@ main{
     height: 634px;
     padding: 5px 10px;
 }
-.sports, section, .bets{
+.sport-menu, section, .bets{
     background-color: rgba(245, 247, 232, 0.69);
     margin: 5px;
 }
-.sports{
+.sport-menu{
     margin: 5px;
     display: flex;
     flex-direction: column;
@@ -152,6 +165,7 @@ main{
 .sport-title{
     padding: 5px;
     background-color: rgba(247,243,211,0.69);
+    font-weight: revert;
 }
 
 .az-sport{

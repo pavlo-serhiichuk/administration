@@ -1,3 +1,4 @@
+let selectedSport;
 let currentLanguage = "en";
 let users = [{
     username: '2',
@@ -19,6 +20,7 @@ function changeTranslations() {
         let translation = content[sportName].SPORT_NAME[language];
         getClassName(sportName).innerHTML = translation;
     }
+    showSport(selectedSport);
 }
 
 let dialog = {
@@ -44,8 +46,8 @@ let accountMenu = {
     show(username) {
         getClassName('user').style.display = 'block';
         getClassName('showLoginDialogButton').style.display = 'none';
-        getClassName('login').innerHTML = username;
         getClassName('showRegistrationDialogButton').style.display = 'none';
+        getClassName('login').innerHTML = username;
         getClassName('logo-container').classList.add('logged');
         dialog.close();
         showUserData();
@@ -53,7 +55,7 @@ let accountMenu = {
     hide() {
         getClassName('user').style.display = 'none';
         getClassName('showLoginDialogButton').style.display = 'block';
-        getClassName('user-data').style.display = 'none';
+        getClassName('showRegistrationDialogButton').style.display = 'block';
         getClassName('logo-container').classList.remove('logged');
     },
 };
@@ -88,10 +90,6 @@ function showErrorMassage(massage = '') {
     getClassName('massage').style.display = 'block';
 }
 
-function showUserData() {
-    getClassName('user-data').style.display = 'block';
-}
-
 function isUserExist({username}) {
     let filteredUsers = users.filter(user => username == user.username);
     return !!filteredUsers.length;
@@ -104,16 +102,31 @@ function getCredentials() {
 }
 
 function setContent() {
-    let sportMenu = getClassName('sports');
+    let sportMenu = getClassName('sport-menu');
     for (let sportName in content) {
         let translation = content[sportName].SPORT_NAME[currentLanguage];
         let button = createButton(sportName, translation);
         sportMenu.appendChild(button);
+
+        if (content[sportName].SELECTED) {
+            selectedSport = sportName;
+        }
     }
 }
 
-function showSport() {
+function showSport(sportName) {
+    selectedSport = sportName;
+    let selectedLanguage = document.getElementById('translationKey').value;
+    let sportContent = getClassName('sport-content');
+    sportContent.innerHTML = '';
+    let events = content[sportName].EVENTS;
 
+    events.forEach(item => {
+        let eventName = item.NAME[selectedLanguage];
+        let div = document.createElement('DIV');
+        div.innerHTML = eventName;
+        sportContent.appendChild(div);
+    });
 }
 
 function createButton(sportName, translation) {
@@ -125,6 +138,3 @@ function createButton(sportName, translation) {
     return button;
 }
 
-function insertButton() {
-
-}
