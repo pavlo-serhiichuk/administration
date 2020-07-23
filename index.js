@@ -119,7 +119,7 @@ function showSport(sportName) {
 
     events.forEach(item => {
         let eventName = item.NAME[selectedLanguage];
-
+        eventName.split(" - ");
         let eventContainer = document.createElement('DIV');
         eventContainer.classList.add('event-container');
         eventContainer.appendChild(getEventNameContainer(eventName));
@@ -141,6 +141,10 @@ function getButtonContainer() {
     let button0 = document.createElement('BUTTON');
     let button1 = document.createElement('BUTTON');
     let button2 = document.createElement('BUTTON');
+    button0.classList.add('button-coefficient');
+    button1.classList.add('button-coefficient');
+    button2.classList.add('button-coefficient');
+
     button0.innerHTML = '3.43';
     button1.innerHTML = '2.3';
     button2.innerHTML = '1.75';

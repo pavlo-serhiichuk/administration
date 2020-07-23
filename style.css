@@ -182,9 +182,41 @@ main{
     color: dimgray;
 }
 
-section{
+.sport-content{
 
 }
+.event-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-top: 1px solid silver;
+}
+.event-name-container{
+    width: 114px;
+    font-size: 15px;
+}
+.button-container{
+    min-width: 500px;
+    max-width: 500px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.button-coefficient{
+    margin: 5px;
+    width: 150px;
+    height: 40px;
+    padding: 5px 20px;
+    background-color: darkgray;
+}
+
+.button-coefficient:hover{
+    background-color: dodgerblue;
+}
+.button-coefficient:link{
+    background-color: dodgerblue;
+}
+
 .bets{
 
 }

@@ -32,7 +32,7 @@ let content = {
             {
                 NAME: {
                     "en":"Chicago Bulls - Chimik",
-                    "ru":"Чикагські бики - Химик",
+                    "ru":"Чикагськие быки - Химик",
                 },
             },
             {
