@@ -45,29 +45,29 @@ let content = {
         ]
 
     },
-    // az_tennis: {
-    //     SPORT_NAME: {
-    //         "en": "tennis",
-    //         "ru": "Баскетбол",
-    //         "ua": "Баскетбол",
-    //     },
-    //     EVENTS:[
-    //         {
-    //             NAME: {
-    //                 "en":"Chicago Bulls - Chimik",
-    //                 "ru":"Чикагські бики - Химик",
-    //             },
-    //         },
-    //         {
-    //             NAME: {
-    //                 "en":"Denver Nuggets - Goverla",
-    //                 "ru":"Денверс Наггетс - Говерла",
-    //             },
-    //         },
-    //
-    //     ]
-    //
-    // },az_baseball: {
+    az_tennis: {
+        SPORT_NAME: {
+            "en": "Tennis",
+            "ru": "Тенис",
+        },
+        EVENTS:[
+            {
+                NAME: {
+                    "en":"",
+                    "ru":"",
+                },
+            },
+            {
+                NAME: {
+                    "en":"",
+                    "ru":"",
+                },
+            },
+
+        ]
+
+    },
+    // az_baseball: {
     //     SPORT_NAME: {
     //         "en": "baseball",
     //         "ru": "Баскетбол",

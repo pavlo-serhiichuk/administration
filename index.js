@@ -145,13 +145,31 @@ function getButtonContainer() {
     button1.classList.add('button-coefficient');
     button2.classList.add('button-coefficient');
 
+    button0.onclick = addSubmitClass;
+    button1.onclick = addSubmitClass;
+    button2.onclick = addSubmitClass;
+
     button0.innerHTML = '3.43';
     button1.innerHTML = '2.3';
     button2.innerHTML = '1.75';
     buttonContainer.appendChild(button0);
     buttonContainer.appendChild(button1);
     buttonContainer.appendChild(button2);
+
     return buttonContainer;
+
+    function addSubmitClass (self) {
+        let submittedClassName = "submitted-beating-button";
+        let classList = self.currentTarget.classList;
+        let isSubmitClassExist = classList.contains(submittedClassName);
+
+        if (isSubmitClassExist) {
+            classList.remove(submittedClassName);
+        } else {
+            classList.add(submittedClassName);
+        }
+
+    };
 }
 
 function createButton(sportName, translation) {
@@ -161,5 +179,7 @@ function createButton(sportName, translation) {
     button.onclick = () => showSport(sportName);
     button.innerHTML = translation;
     return button;
+
 }
+
 

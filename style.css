@@ -226,3 +226,10 @@ footer{
     height: 70px;
     background-color: lightblue;
 }
+
+.submitted-beating-button{
+    background-color: dodgerblue;
+}
+.submitted-beating-button:hover{
+    background-color: rgba(3,33,214,0.75);   
+}
