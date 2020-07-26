@@ -5,6 +5,7 @@
 body {
     margin: 0;
     color: rgba(19,9,29,0.69);
+    font-family: Verdana, Arial, Helvetica, sans-serif;
 }
 button, #translationKey{
     border: none;
@@ -38,7 +39,6 @@ header>div{
     width: 236px;
     display: flex;
     flex-direction: row;
-    font-family: Verdana, Arial, Helvetica, sans-serif;
 }
 
 .logo-good {
@@ -152,7 +152,7 @@ main{
     padding: 5px 10px;
 }
 .sport-menu, section, .bets{
-    background-color: rgba(245, 247, 232, 0.69);
+    background-color: rgba(178, 255, 17, 0.25);
     margin: 5px;
 }
 .sport-menu{
@@ -163,23 +163,24 @@ main{
 }
 
 .sport-title{
-    padding: 5px;
-    background-color: rgba(247,243,211,0.69);
+    padding: 5px 10px;
+    background-color: rgba(228, 247, 100, 0.3);
     font-weight: revert;
 }
 
 .az-sport{
     font-style: normal;
     color: dimgray;
-    padding: 5px;
+    padding: 6px 15px;
     display: flex;
-    background-color: rgba(245, 247, 232, 0.69);
+    background-color: rgba(178, 255, 17, 0);
+    font-weight: 500;
 }
 .az-sport:hover{
     color: rgba(69,74,74,0.69);
 }
 .az-sport:active{
-    color: dimgray;
+    color: #787878;
 }
 
 .sport-content{
@@ -192,31 +193,42 @@ main{
     border-top: 1px solid silver;
 }
 .event-name-container{
-    width: 114px;
-    font-size: 15px;
+    font-size: 17px;
+    padding: 14px;
 }
 .button-container{
-    min-width: 500px;
-    max-width: 500px;
+    width: 300px;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: flex-end;
 }
 .button-coefficient{
     margin: 5px;
-    width: 150px;
+    width: 80px;
     height: 40px;
     padding: 5px 20px;
-    background-color: darkgray;
+    background: #fff;
+    border: 1px solid #d9d9d9;
+    color: #000000;
+    font-style: inherit;
+    font-weight: 500;
 }
 
 .button-coefficient:hover{
-    background-color: dodgerblue;
+    background-color: #dcdcdc;
+    color: #000000;
+
 }
 .button-coefficient:link{
     background-color: dodgerblue;
 }
-
+.submitted-beating-button{
+    background-color: rgba(71, 179, 255, 0.68);
+}
+.submitted-beating-button:hover{
+    background-color: rgba(71, 179, 255, 0.93);
+    color: #000000;
+}
 .bets{
 
 }
@@ -225,11 +237,4 @@ footer{
     width: 100%;
     height: 70px;
     background-color: lightblue;
-}
-
-.submitted-beating-button{
-    background-color: dodgerblue;
-}
-.submitted-beating-button:hover{
-    background-color: rgba(3,33,214,0.75);   
 }
