@@ -216,7 +216,6 @@ main{
 
 .button-coefficient:hover{
     background-color: #dcdcdc;
-    color: #000000;
 
 }
 .button-coefficient:link{
@@ -224,10 +223,17 @@ main{
 }
 .submitted-beating-button{
     background-color: rgba(71, 179, 255, 0.68);
+     color: black !important;
 }
 .submitted-beating-button:hover{
     background-color: rgba(71, 179, 255, 0.93);
-    color: #000000;
+}
+.increased-bet{
+    color: green;
+}
+
+.decreased-bet{
+    color: red;
 }
 .bets{
 

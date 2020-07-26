@@ -1,9 +1,13 @@
 let selectedSport = Object.keys(content)[0];
 let selectedLanguage = "en";
+let submittedClassName = "submitted-beating-button";
+
 let users = [{
     username: '2',
     password: '2',
 }];
+
+let idIntervalBettingButtons = [];
 
 setContent();
 changeTranslations();
@@ -112,6 +116,9 @@ function setContent() {
 }
 
 function showSport(sportName) {
+    idIntervalBettingButtons.forEach(id => clearInterval(id));
+    idIntervalBettingButtons = [];
+
     selectedSport = sportName;
     let sportContent = getClassName('sport-content');
     sportContent.innerHTML = '';
@@ -149,17 +156,16 @@ function getButtonContainer() {
     button1.onclick = addSubmitClass;
     button2.onclick = addSubmitClass;
 
-    button0.innerHTML = '3.43';
-    button1.innerHTML = '2.3';
-    button2.innerHTML = '1.75';
+    getRandomArbitrary(button0, getRandom(3, 7, 0) * 1000);
+    getRandomArbitrary(button1, getRandom(3, 7, 0) * 1000);
+    getRandomArbitrary(button2, getRandom(3, 7, 0) * 1000);
     buttonContainer.appendChild(button0);
     buttonContainer.appendChild(button1);
     buttonContainer.appendChild(button2);
 
     return buttonContainer;
 
-    function addSubmitClass (self) {
-        let submittedClassName = "submitted-beating-button";
+    function addSubmitClass(self) {
         let classList = self.currentTarget.classList;
         let isSubmitClassExist = classList.contains(submittedClassName);
 
@@ -169,7 +175,36 @@ function getButtonContainer() {
             classList.add(submittedClassName);
         }
 
-    };
+        return isSubmitClassExist;
+    }
+}
+
+function getRandom(min = 2, max = 5, round = 2) {
+    let num = Math.random() * (max - min) + min;
+    return +num.toFixed(round);
+}
+
+function getRandomArbitrary(button, timeout) {
+    button.innerHTML = getRandom();
+
+    let intervalId = setInterval(() => {
+        if (button.classList.contains(submittedClassName)) return;
+
+        let nextValue = getRandom();
+        let previousValue = button.innerHTML;
+
+        if (nextValue > previousValue) {
+            button.classList.remove('decreased-bet');
+            button.classList.add('increased-bet');
+            button.innerHTML = nextValue + '  &#8593';
+        } else {
+            button.classList.remove('increased-bet');
+            button.classList.add('decreased-bet');
+            button.innerHTML = nextValue + '  &#8595';
+        }
+    }, timeout);
+
+    idIntervalBettingButtons.push(intervalId);
 }
 
 function createButton(sportName, translation) {
