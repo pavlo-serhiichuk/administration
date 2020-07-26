@@ -174,8 +174,6 @@ function getButtonContainer() {
         } else {
             classList.add(submittedClassName);
         }
-
-        return isSubmitClassExist;
     }
 }
 

@@ -190,7 +190,7 @@ main{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    border-top: 1px solid silver;
+    border-bottom: 1px solid silver;
 }
 .event-name-container{
     font-size: 17px;
