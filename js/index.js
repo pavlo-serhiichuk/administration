@@ -1,31 +1,22 @@
-let selectedSport = Object.keys(content)[0];
-let selectedLanguage = "en";
-let submittedClassName = "submitted-beating-button";
-
-let users = [{
-    username: '2',
-    password: '2',
-}];
-
 let idIntervalBettingButtons = [];
 
 setContent();
 changeTranslations();
 
 function changeTranslations() {
-    selectedLanguage = document.getElementById('translationKey').value;
+    appConfig.selectedLanguage = document.getElementById('translationKey').value;
 
     for (let key in translations) {
-        let translate = translations[key][selectedLanguage];
+        let translate = translations[key][appConfig.selectedLanguage];
         getClassName(key).innerHTML = translate;
     }
 
     for (let sportName in content) {
-        let translation = content[sportName].SPORT_NAME[selectedLanguage];
+        let translation = content[sportName].SPORT_NAME[appConfig.selectedLanguage];
         getClassName(sportName).innerHTML = translation;
     }
 
-    showSport(selectedSport);
+    showSport(appConfig.selectedSport);
 }
 
 let dialog = {
@@ -109,7 +100,7 @@ function getCredentials() {
 function setContent() {
     let sportMenu = getClassName('sport-menu');
     for (let sportName in content) {
-        let translation = content[sportName].SPORT_NAME[selectedLanguage];
+        let translation = content[sportName].SPORT_NAME[appConfig.selectedLanguage];
         let button = createButton(sportName, translation);
         sportMenu.appendChild(button);
     }
@@ -119,14 +110,14 @@ function showSport(sportName) {
     idIntervalBettingButtons.forEach(id => clearInterval(id));
     idIntervalBettingButtons = [];
 
-    selectedSport = sportName;
+    appConfig.selectedSport = sportName;
     let sportContent = getClassName('sport-content');
     sportContent.innerHTML = '';
     let events = ((content[sportName] || {}).EVENTS || []);
-    sportContent.appendChild(getContentTitle(content[sportName].SPORT_NAME[selectedLanguage]));
+    sportContent.appendChild(getContentTitle(content[sportName].SPORT_NAME[appConfig.selectedLanguage]));
 
     events.forEach(item => {
-        let eventName = item.NAME[selectedLanguage];
+        let eventName = item.NAME[appConfig.selectedLanguage];
         // eventName.split(" - ");
         let eventContainer = document.createElement('DIV');
 
@@ -177,12 +168,12 @@ function getButtonContainer() {
 
     function addSubmitClass(self) {
         let classList = self.currentTarget.classList;
-        let isSubmitClassExist = classList.contains(submittedClassName);
+        let isSubmitClassExist = classList.contains(appConfig.submittedClassName);
 
         if (isSubmitClassExist) {
-            classList.remove(submittedClassName);
+            classList.remove(appConfig.submittedClassName);
         } else {
-            classList.add(submittedClassName);
+            classList.add(appConfig.submittedClassName);
         }
         // return isSubmitClassExist;
     }
@@ -197,7 +188,7 @@ function getRandomArbitrary(button, timeout) {
     button.innerHTML = getRandom();
 
     let intervalId = setInterval(() => {
-        if (button.classList.contains(submittedClassName)) return;
+        if (button.classList.contains(appConfig.submittedClassName)) return;
 
         let nextValue = getRandom();
         let previousValue = +button.innerHTML.split(' ')[0];
