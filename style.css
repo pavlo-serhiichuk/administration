@@ -162,10 +162,11 @@ main{
     height: 200px;
 }
 
-.sport-title{
+.sport-title, .sport-content-title{
     padding: 5px 10px;
-    background-color: rgba(228, 247, 100, 0.3);
+    background-color: rgba(178, 247, 109, 0.75);
     font-weight: revert;
+
 }
 
 .az-sport{

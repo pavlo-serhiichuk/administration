@@ -123,16 +123,26 @@ function showSport(sportName) {
     let sportContent = getClassName('sport-content');
     sportContent.innerHTML = '';
     let events = ((content[sportName] || {}).EVENTS || []);
+    sportContent.appendChild(getContentTitle(content[sportName].SPORT_NAME[selectedLanguage]));
 
     events.forEach(item => {
         let eventName = item.NAME[selectedLanguage];
-        eventName.split(" - ");
+        // eventName.split(" - ");
         let eventContainer = document.createElement('DIV');
+
         eventContainer.classList.add('event-container');
         eventContainer.appendChild(getEventNameContainer(eventName));
         eventContainer.appendChild(getButtonContainer());
         sportContent.appendChild(eventContainer);
     });
+
+}
+
+function getContentTitle(sportName) {
+    let contentTitle = document.createElement('DIV');
+    contentTitle.classList.add('sport-content-title');
+    contentTitle.innerHTML = sportName;
+    return contentTitle;
 }
 
 function getEventNameContainer(eventName) {
@@ -174,6 +184,7 @@ function getButtonContainer() {
         } else {
             classList.add(submittedClassName);
         }
+        // return isSubmitClassExist;
     }
 }
 
@@ -189,9 +200,9 @@ function getRandomArbitrary(button, timeout) {
         if (button.classList.contains(submittedClassName)) return;
 
         let nextValue = getRandom();
-        let previousValue = button.innerHTML;
+        let previousValue = +button.innerHTML.split(' ')[0];
 
-        if (nextValue > previousValue) {
+        if (nextValue > +previousValue) {
             button.classList.remove('decreased-bet');
             button.classList.add('increased-bet');
             button.innerHTML = nextValue + '  &#8593';
