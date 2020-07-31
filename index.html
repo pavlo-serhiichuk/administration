@@ -14,10 +14,7 @@
                 <button class="logo-good">GOOD </button>
                 <button class="logo-bet">BET</button>
             </div>
-            <select id="translationKey" onchange="changeTranslations()">
-                <option value="en" selected>English</option>
-                <option value="ru">Русский</option>
-            </select>
+
         </div>
         <div class="main-menu">
             <button class="menu showLoginDialogButton log-in-text" onclick="dialog.showLogin()"></button>
@@ -29,12 +26,32 @@
             <button class="menu log-out-in-text" onclick="accountMenu.hide()"></button>
         </div>
     </header>
+    <div class="navigation">
+        <div class="nav-menu">
+            <span>Home</span>
+            <span>Inplay</span>
+        </div>
+        <div class="site-settings-container">
+            <span id="sessionTime"></span>
+            <button onclick="switchSizeSettingView()">
+                <img src="site-settings.png" alt="">
+            </button>
+            <div class="site-settings-popup">
+                <select id="translationKey" onchange="changeTranslations()">
+                    <option value="en" selected>English</option>
+                    <option value="ru">Русский</option>
+                </select>
+            </div>
+        </div>
+    </div>
     <main>
         <div class="sport-menu">
             <div class="sport-title">Title</div>
         </div>
         <section class="sport-content"></section>
-        <div class="bets"></div>
+        <div class="bets">
+
+        </div>
     </main>
 </div>
 

@@ -1,3 +1,5 @@
+// let path = ['az_football', 'EVENTS', 0, 'NAME', selectedLanguage];
+
 let content = {
     az_football: {
         SPORT_NAME: {
@@ -7,12 +9,14 @@ let content = {
         },
         EVENTS:[
             {
+                id: 0,
                 NAME: {
                     "en":"Dinamo Kiyv - Shahtar",
                     "ru":"Динако Киев - Шахтар",
                 },
             },
-        {
+            {
+                id: 1,
                 NAME: {
                     "en":"Dnipro - Zenit",
                     "ru":"Днепр - Зенит",

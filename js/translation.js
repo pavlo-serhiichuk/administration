@@ -22,5 +22,10 @@ let translations = {
     "sport-title": {
         "en": "Sport menu",
         "ru": "Спорт меню",
-    }
+    },
+
+    // "_language": {
+    //     "en": "English",
+    //     "ru": "Rusia"
+    // }
 };

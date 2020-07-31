@@ -145,6 +145,30 @@ header>div{
     color: dimgray;
 }
 
+.navigation{
+    width: 100%;
+    height: 30px;
+    background-color: rgba(178, 247, 109, 0.75);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.site-settings-container{
+    position: relative;
+    padding: 0 10px;
+}
+.site-settings-popup{
+    display: none;
+    width: 104px;
+    height: 55px;
+    background: red;
+    position: absolute;
+    right: 13px;
+    top: 29px;
+}
+img{
+    height: 22px;
+}
 main{
     display: grid;
     grid-template-columns: 2fr 6fr 3fr;
@@ -244,4 +268,8 @@ footer{
     width: 100%;
     height: 70px;
     background-color: lightblue;
+}
+
+.show{
+    display: block;
 }

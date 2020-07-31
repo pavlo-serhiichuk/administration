@@ -2,6 +2,7 @@ let idIntervalBettingButtons = [];
 
 setContent();
 changeTranslations();
+showSessionTime();
 
 function changeTranslations() {
     appConfig.selectedLanguage = document.getElementById('translationKey').value;
@@ -214,7 +215,22 @@ function createButton(sportName, translation) {
     button.onclick = () => showSport(sportName);
     button.innerHTML = translation;
     return button;
-
 }
 
+function switchSizeSettingView(){
+    let siteSettingsPopup = getClassName('site-settings-popup');
+    let isShowClassExist = siteSettingsPopup.classList.contains('show');
 
+    if (isShowClassExist) {
+        siteSettingsPopup.classList.remove('show');
+    } else {
+        siteSettingsPopup.classList.add('show');
+    }
+}
+
+function showSessionTime() {
+    let seconds = 0;
+    setInterval(() => {
+        sessionTime.innerHTML = ++seconds;
+    },  1000);
+}
