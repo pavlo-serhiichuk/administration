@@ -186,7 +186,7 @@ main{
     height: 200px;
 }
 
-.sport-title, .sport-content-title{
+.sport-title, .sport-content-title, .bets-title{
     padding: 5px 10px;
     background-color: rgba(178, 247, 109, 0.75);
     font-weight: revert;
@@ -269,10 +269,6 @@ footer{
     height: 70px;
     background-color: lightblue;
 }
-
-.show{
-    display: block;
-}
 .betslip-event-container{
     padding: 5px 20px;
     display: flex;
@@ -280,11 +276,19 @@ footer{
 }
 .betslip-event-percent-container{
     background-color: green;
-    padding: 6px;
+    width: 70px;
+    text-align: center;
 }
 .plays-bet-button{
     width: 100%;
     height: 30px;
     background-color: green;
     color: #3b3b3b;
+}
+.betslip-message,
+.bet-place-container {
+    display: none;
+}
+.show{
+    display: block;
 }

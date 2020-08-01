@@ -23,9 +23,21 @@ let translations = {
         "en": "Sport menu",
         "ru": "Спорт меню",
     },
+    "bets-title": {
+        "en": "Betslip",
+        "ru": "Бетслип"
+    },
+    "bet-amount-label": {
+        "en": "Bet amount",
+        "ru": "Ставка"
+    },
+    "plays-bet-button": {
+        "en": "Place bet",
+        "ru": "Сделать ставку"
+    },
+     "betslip-message": {
+        "en": "Your betslip is empty!",
+        "ru": "Нет ставок!"
+    },
 
-    // "_language": {
-    //     "en": "English",
-    //     "ru": "Rusia"
-    // }
 };

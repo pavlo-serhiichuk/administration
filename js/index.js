@@ -4,13 +4,15 @@ setContent();
 changeTranslations();
 showSessionTime();
 
-
 function changeTranslations() {
     appConfig.selectedLanguage = document.getElementById('translationKey').value;
+    showBetslipEvents();
 
     for (let key in translations) {
         let translate = translations[key][appConfig.selectedLanguage];
-        getClassName(key).innerHTML = translate;
+        let element = getClassName(key);
+
+        if (element) element.innerHTML = translate;
     }
 
     for (let sportName in content) {
@@ -19,7 +21,6 @@ function changeTranslations() {
     }
 
     showSport(appConfig.selectedSport);
-    showBetslipEvents();
 }
 
 let dialog = {
@@ -174,7 +175,12 @@ function getButtonContainer(eventSpecificKey) {
         self.currentTarget.classList.toggle(appConfig.submittedClassName);
         let betPercent = self.currentTarget.textContent.split(' ')[0];
         let key =`${eventSpecificKey}$${buttonIndex}$${betPercent}`;
-        appConfig.betslipEvents.push(key);
+        if(!appConfig.betslipEvents.find(item => item === key)){
+            appConfig.betslipEvents.push(key);
+        } else{
+            appConfig.betslipEvents = appConfig.betslipEvents.filter(value => value !== key);
+
+        }
         showBetslipEvents();
     }
 
@@ -236,7 +242,7 @@ function showSessionTime() {
 }
 
 function showBetslipEvents() {
-    let bets = getClassName('bets');
+    let bets = getClassName('bets-container');
     bets.innerHTML = "";
 
     appConfig.betslipEvents.forEach(key => {
@@ -260,18 +266,11 @@ function showBetslipEvents() {
     });
 
     if (appConfig.betslipEvents.length) {
-        let betPlaysContainer = document.createElement('DIV');
-        let label = document.createElement('SPAN');
-        label.innerHTML = 'Place amount';
-        let input = document.createElement('INPUT');
-        betPlaysContainer.appendChild(label);
-        betPlaysContainer.appendChild(input);
-        bets.appendChild(betPlaysContainer);
-
-        let playsBetButton = document.createElement('BUTTON');
-        playsBetButton.classList.add('plays-bet-button');
-        playsBetButton.innerHTML = 'Plays bet';
-        bets.appendChild(playsBetButton);
+        getClassName('betslip-message').classList.remove('show');
+        getClassName('bet-place-container').classList.add('show');
+    } else {
+        getClassName('bet-place-container').classList.remove('show');
+        getClassName('betslip-message').classList.add('show');
     }
 }
 
