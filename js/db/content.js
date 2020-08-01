@@ -7,9 +7,8 @@ let content = {
             "ru": "Футбол",
             "ua": "Футбол"
         },
-        EVENTS:[
+        EVENTS: [
             {
-                id: 0,
                 NAME: {
                     "en":"Dinamo Kiyv - Shahtar",
                     "ru":"Динако Киев - Шахтар",

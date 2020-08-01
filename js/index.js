@@ -4,6 +4,7 @@ setContent();
 changeTranslations();
 showSessionTime();
 
+
 function changeTranslations() {
     appConfig.selectedLanguage = document.getElementById('translationKey').value;
 
@@ -18,6 +19,7 @@ function changeTranslations() {
     }
 
     showSport(appConfig.selectedSport);
+    showBetslipEvents();
 }
 
 let dialog = {
@@ -117,14 +119,15 @@ function showSport(sportName) {
     let events = ((content[sportName] || {}).EVENTS || []);
     sportContent.appendChild(getContentTitle(content[sportName].SPORT_NAME[appConfig.selectedLanguage]));
 
-    events.forEach(item => {
+    events.forEach((item, index) => {
         let eventName = item.NAME[appConfig.selectedLanguage];
         // eventName.split(" - ");
         let eventContainer = document.createElement('DIV');
 
         eventContainer.classList.add('event-container');
         eventContainer.appendChild(getEventNameContainer(eventName));
-        eventContainer.appendChild(getButtonContainer());
+        let eventSpecificKey = `${sportName}$${index}`;
+        eventContainer.appendChild(getButtonContainer(eventSpecificKey));
         sportContent.appendChild(eventContainer);
     });
 
@@ -144,7 +147,7 @@ function getEventNameContainer(eventName) {
     return eventNameContainer;
 }
 
-function getButtonContainer() {
+function getButtonContainer(eventSpecificKey) {
     let buttonContainer = document.createElement('DIV');
     buttonContainer.classList.add('button-container');
     let button0 = document.createElement('BUTTON');
@@ -154,9 +157,9 @@ function getButtonContainer() {
     button1.classList.add('button-coefficient');
     button2.classList.add('button-coefficient');
 
-    button0.onclick = addSubmitClass;
-    button1.onclick = addSubmitClass;
-    button2.onclick = addSubmitClass;
+    button0.onclick = (self) => addSubmitClass(self, eventSpecificKey, 0);
+    button1.onclick = (self) => addSubmitClass(self, eventSpecificKey, 1);
+    button2.onclick = (self) => addSubmitClass(self, eventSpecificKey, 2);
 
     getRandomArbitrary(button0, getRandom(3, 7, 0) * 1000);
     getRandomArbitrary(button1, getRandom(3, 7, 0) * 1000);
@@ -167,17 +170,14 @@ function getButtonContainer() {
 
     return buttonContainer;
 
-    function addSubmitClass(self) {
-        let classList = self.currentTarget.classList;
-        let isSubmitClassExist = classList.contains(appConfig.submittedClassName);
-
-        if (isSubmitClassExist) {
-            classList.remove(appConfig.submittedClassName);
-        } else {
-            classList.add(appConfig.submittedClassName);
-        }
-        // return isSubmitClassExist;
+    function addSubmitClass(self, eventSpecificKey, buttonIndex) {
+        self.currentTarget.classList.toggle(appConfig.submittedClassName);
+        let betPercent = self.currentTarget.textContent.split(' ')[0];
+        let key =`${eventSpecificKey}$${buttonIndex}$${betPercent}`;
+        appConfig.betslipEvents.push(key);
+        showBetslipEvents();
     }
+
 }
 
 function getRandom(min = 2, max = 5, round = 2) {
@@ -234,3 +234,44 @@ function showSessionTime() {
         sessionTime.innerHTML = ++seconds;
     },  1000);
 }
+
+function showBetslipEvents() {
+    let bets = getClassName('bets');
+    bets.innerHTML = "";
+
+    appConfig.betslipEvents.forEach(key => {
+        [sportName, eventId, submittedButtonIndex, betPercent] = key.split('$');
+
+        let eventNameContainer = document.createElement('DIV');
+        eventNameContainer.classList.add('betslip-event-name-container');
+        let eventName = content[sportName].EVENTS[eventId].NAME[appConfig.selectedLanguage];
+        eventNameContainer.innerHTML = eventName;
+
+        let eventPercentContainer = document.createElement('DIV');
+        eventPercentContainer.classList.add('betslip-event-percent-container');
+        eventPercentContainer.innerHTML = betPercent;
+
+        let eventContainer = document.createElement('DIV');
+        eventContainer.appendChild(eventNameContainer);
+        eventContainer.appendChild(eventPercentContainer);
+        eventContainer.classList.add('betslip-event-container');
+
+        bets.appendChild(eventContainer);
+    });
+
+    if (appConfig.betslipEvents.length) {
+        let betPlaysContainer = document.createElement('DIV');
+        let label = document.createElement('SPAN');
+        label.innerHTML = 'Place amount';
+        let input = document.createElement('INPUT');
+        betPlaysContainer.appendChild(label);
+        betPlaysContainer.appendChild(input);
+        bets.appendChild(betPlaysContainer);
+
+        let playsBetButton = document.createElement('BUTTON');
+        playsBetButton.classList.add('plays-bet-button');
+        playsBetButton.innerHTML = 'Plays bet';
+        bets.appendChild(playsBetButton);
+    }
+}
+
