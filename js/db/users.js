@@ -1,4 +1,5 @@
 let users = [{
-    username: '2',
+    username: 'A',
     password: '2',
+    balance: 1212
 }];

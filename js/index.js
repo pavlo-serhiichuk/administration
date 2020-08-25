@@ -42,11 +42,12 @@ let dialog = {
 };
 
 let accountMenu = {
-    show(username) {
+    show({username, balance}) {
         getClassName('user').style.display = 'block';
         getClassName('showLoginDialogButton').style.display = 'none';
         getClassName('showRegistrationDialogButton').style.display = 'none';
         getClassName('login').innerHTML = username;
+        getClassName('balance').innerHTML = `$${balance}`;
         getClassName('logo-container').classList.add('logged');
         dialog.close();
         showUserData();
@@ -65,9 +66,9 @@ function getClassName(className) {
 
 function loginUser() {
     let credential = getCredentials();
-
-    if (isUserExist(credential)) {
-        accountMenu.show(credential.username);
+    let user = getUser(credential);
+    if (user) {
+        accountMenu.show(user);
     } else {
         showErrorMassage('Wrong data!!!');
     }
@@ -76,7 +77,7 @@ function loginUser() {
 function registerUser() {
     let credential = getCredentials();
 
-    if (isUserExist(credential)) {
+    if (getUser(credential)) {
         showErrorMassage('User is already exist.');
     } else {
         accountMenu.show(credential.username);
@@ -89,9 +90,9 @@ function showErrorMassage(massage = '') {
     getClassName('massage').style.display = 'block';
 }
 
-function isUserExist({username}) {
-    let filteredUsers = users.filter(user => username == user.username);
-    return !!filteredUsers.length;
+function getUser({username, password}) {
+    let filteredUsers = users.filter(user => username === user.username && user.password === password);
+    return filteredUsers.length ? filteredUsers[0]: null;
 }
 
 function getCredentials() {
