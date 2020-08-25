@@ -57,11 +57,19 @@ let accountMenu = {
         getClassName('showLoginDialogButton').style.display = 'block';
         getClassName('showRegistrationDialogButton').style.display = 'block';
         getClassName('logo-container').classList.remove('logged');
+        appConfig.isUserLogged = false;
+        showBetslipEvents();
     },
 };
 
 function getClassName(className) {
     return document.getElementsByClassName(className)[0];
+}
+
+function hutco() {
+    accountMenu.show(users[0]);
+    appConfig.isUserLogged = true;
+    showBetslipEvents();
 }
 
 function loginUser() {
