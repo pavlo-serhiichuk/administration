@@ -1,5 +1,6 @@
 let idIntervalBettingButtons = [];
 
+
 setContent();
 changeTranslations();
 showSessionTime();
@@ -50,7 +51,6 @@ let accountMenu = {
         getClassName('balance').innerHTML = `$${balance}`;
         getClassName('logo-container').classList.add('logged');
         dialog.close();
-        showUserData();
     },
     hide() {
         getClassName('user').style.display = 'none';
@@ -69,6 +69,8 @@ function loginUser() {
     let user = getUser(credential);
     if (user) {
         accountMenu.show(user);
+        appConfig.isUserLogged = true;
+        showBetslipEvents();
     } else {
         showErrorMassage('Wrong data!!!');
     }
@@ -124,7 +126,7 @@ function showSport(sportName) {
     events.forEach((item, index) => {
         let eventName = item.NAME[appConfig.selectedLanguage];
         let eventContainer = createElement('DIV','event-container');
-        let eventNameContainer = createElement('DIV', 'event-name-container', eventName)
+        let eventNameContainer = createElement('DIV', 'event-name-container', eventName);
         eventContainer.appendChild(eventNameContainer);
 
         eventContainer.appendChild(getButtonContainer(`${sportName}$${index}`));
@@ -236,6 +238,14 @@ function showBetslipEvents() {
     } else {
         getClassName('bet-place-container').classList.remove('show');
         getClassName('betslip-message').classList.add('show');
+    }
+
+    if (appConfig.isUserLogged) {
+        getClassName('login-button-betslip').classList.remove('show');
+        getClassName('plays-bet-button').classList.add('show');
+    } else {
+        getClassName('login-button-betslip').classList.add('show');
+        getClassName('plays-bet-button').classList.remove('show');
     }
 }
 

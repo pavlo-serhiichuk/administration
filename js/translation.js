@@ -3,6 +3,10 @@ let translations = {
         "en": "Log in",
         "ru": "Вход",
     },
+    "login-button-betslip": {
+        "en": "Log in",
+        "ru": "Вход",
+    },
     "register-text": {
         "en": "Registration",
         "ru": "Регистрация",

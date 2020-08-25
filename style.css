@@ -279,14 +279,14 @@ footer{
     width: 70px;
     text-align: center;
 }
-.plays-bet-button{
+.plays-bet-button, .login-button-betslip{
     width: 100%;
     height: 30px;
     background-color: green;
     color: #3b3b3b;
 }
 .betslip-message,
-.bet-place-container {
+.bet-place-container, .plays-bet-button, .login-button-betslip {
     display: none;
 }
 .show{
