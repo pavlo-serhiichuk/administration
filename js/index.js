@@ -73,11 +73,12 @@ function hutco() {
 }
 
 function loginUser() {
-    let credential = getCredentials();
-    let user = getUser(credential);
+    let userDataFromPopupForAutorisation = getUserNameAndPasswordFromModalDialog();
+    let user = getUserInfoFromUsersDB(userDataFromPopupForAutorisation);
     if (user) {
         accountMenu.show(user);
         appConfig.isUserLogged = true;
+        appConfig.user = user;
         showBetslipEvents();
     } else {
         showErrorMassage('Wrong data!!!');
@@ -85,9 +86,9 @@ function loginUser() {
 }
 
 function registerUser() {
-    let credential = getCredentials();
+    let credential = getUserNameAndPasswordFromModalDialog();
 
-    if (getUser(credential)) {
+    if (getUserInfoFromUsersDB(credential)) {
         showErrorMassage('User is already exist.');
     } else {
         accountMenu.show(credential.username);
@@ -100,12 +101,62 @@ function showErrorMassage(massage = '') {
     getClassName('massage').style.display = 'block';
 }
 
-function getUser({username, password}) {
-    let filteredUsers = users.filter(user => username === user.username && user.password === password);
-    return filteredUsers.length ? filteredUsers[0]: null;
+function getUserInfoFromUsersDB(userDataFromPopupForAutorisation) {
+    let {username, password} = userDataFromPopupForAutorisation;
+    // let filteredUsers = users.filter(user => username === user.username && user.password === password);
+    let filteredUsers = [];
+
+    for (let i = 0; i < users.length; i++) {
+        let user = users[i];
+        if (username === user.username && user.password === password) {
+            filteredUsers.push(user)
+        }
+    }
+
+    // return filteredUsers.length ? filteredUsers[0]: null;
+    if (filteredUsers.length) {
+        return filteredUsers[0];
+    }
+
+    return null;
 }
 
-function getCredentials() {
+function f(perrmission) {
+    //1
+    if (perrmission) {
+        return true;
+    } else {
+        return false;
+    }
+
+    //2
+    if (perrmission) {
+        return true;
+    }
+    return false;
+
+    //3
+    return perrmission ? true : false;
+}
+// users.filter(callback)
+// function filter(callback) {
+//     let newArray = [];
+//
+//     for(let i = 0; i < this.length; i++) {
+//         let user = this[i];
+//         if (callback(user)) {
+//             newArray.push(user)
+//         }
+//     }
+//
+//     return newArray;
+// }
+
+function f1() {
+
+}
+
+function getUserNameAndPasswordFromModalDialog() {
     let username = document.getElementById('username').value;
     let password = document.getElementById('password').value;
     return {username, password};
@@ -263,4 +314,9 @@ function createElement(tagName  = "", className = "", text = "", onclick = () =>
     tag.innerHTML = text;
     tag.onclick = onclick;
     return tag;
+}
+
+function placeBet() {
+    let betAmount = getClassName('bet-amount-label').value;
+    let balance = getClassName('')
 }

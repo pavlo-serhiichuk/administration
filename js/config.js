@@ -1,4 +1,5 @@
 let appConfig = {
+    user: null,
     isUserLogged: false,
     selectedSport: Object.keys(content)[0],
     selectedLanguage: "en",
